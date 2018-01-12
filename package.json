@@ -1,0 +1,29 @@
+{
+  "name": "elastic-interview",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "postinstall": "cp -v patch/Server.js node_modules/parcel-bundler/src/",
+    "start": "parcel index.html"
+  },
+  "standard": {
+    "globals": [
+      "FileReader",
+      "localStorage",
+      "fetch"
+    ]
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "hackmidi": "^0.0.2",
+    "parcel-bundler": "^1.4.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-rangeslider": "^2.2.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.2",
+    "standard": "^10.0.3",
+    "vmd": "^1.33.0"
+  }
+}
