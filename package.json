@@ -4,7 +4,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "postinstall": "cp -v patch/Server.js node_modules/parcel-bundler/src/",
-    "start": "parcel index.html"
+    "start": "cp -r assets/* dist && parcel index.html",
+    "deploy": "mkdir -p prod && cp -r assets/* prod && parcel build -d prod --public-url ./ index.html && firebase deploy"
   },
   "standard": {
     "globals": [
@@ -16,6 +17,7 @@
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "firebase-tools": "^3.16.0",
     "hackmidi": "^0.0.2",
     "parcel-bundler": "^1.4.1",
     "react": "^16.2.0",

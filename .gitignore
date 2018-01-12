@@ -1,3 +1,5 @@
 node_modules
-yarn.lock
-.cache
+/yarn.lock
+/.cache
+/dist
+/prod

@@ -30,15 +30,21 @@ export default ({ activity, onPlay, onPause, onPrevious, onNext, onSeek }) => (
         {secondsToMinutes(activity.duration - activity.position)}
       </div>
     </div>
-    <div style={{ clear: 'both', textAlign: 'center' }}>
-      <Button icon='backward' onClick={onPrevious} />
-      {!activity.playing &&
-        <Button icon='play' onClick={onPlay} />
-      }
-      {activity.playing &&
-        <Button icon='pause' onClick={onPause} />
-      }
-      <Button icon='forward' onClick={onNext} />
+    <div style={{ clear: 'both' }}></div>
+    <div>
+      <div style={{ float: 'left', marginRight: '3.5em' }}>
+          &nbsp;
+      </div>
+      <div style={{ textAlign: 'center', width: '70%', float: 'left' }}>
+        <Button icon='backward' onClick={onPrevious} />
+        {!activity.playing &&
+          <Button icon='play' onClick={onPlay} />
+        }
+        {activity.playing &&
+          <Button icon='pause' onClick={onPause} />
+        }
+        <Button icon='forward' onClick={onNext} />
+      </div>
     </div>
   </div>
 )
