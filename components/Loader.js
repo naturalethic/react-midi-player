@@ -18,7 +18,7 @@ function loadFile (file, then) {
   reader.readAsDataURL(file)
 }
 
-export default ({ onTrackLoaded }) => (
+export default ({ inverted, onTrackLoaded }) => (
   <div>
     <input multiple
       style={{ display: 'none' }}
@@ -29,6 +29,6 @@ export default ({ onTrackLoaded }) => (
         }
       }}
     />
-    <Button inverted onClick={event => event.target.previousSibling.click()}>Add Files</Button>
+    <Button inverted={inverted} onClick={event => event.target.previousSibling.click()}>Add Files</Button>
   </div>
 )

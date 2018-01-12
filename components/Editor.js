@@ -1,8 +1,8 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react'
 
-export default ({ track, onFieldChange }) => (
-  <Form inverted>
+export default ({ inverted, track, onFieldChange }) => (
+  <Form inverted={inverted}>
     <Form.Field>
       <label>Title</label>
       <input

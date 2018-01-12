@@ -8,10 +8,15 @@ import { secondsToMinutes } from '../lib/time'
 export default ({ activity, onPlay, onPause, onPrevious, onNext, onSeek }) => (
   <div>
     <div style={{ textAlign: 'center', paddingBottom: '.2em' }}>
-      {activity.track ? <span>{activity.track.title}</span> : <span>&nbsp;</span>}
+      {activity.track
+        ? <span>
+          {activity.track.artist ? activity.track.artist + ' - ' : ''}
+          {activity.track.title}
+          {activity.track.album ? ' - ' + activity.track.album : ''}
+        </span> : <span>&nbsp;</span>}
     </div>
-    <div style={{  }}>
-      <div style={{ float: 'left', marginTop: '1.15em', marginRight: '2em'}}>
+    <div>
+      <div style={{ float: 'left', marginTop: '1.15em', marginRight: '1.5em' }}>
         {secondsToMinutes(activity.position)}
       </div>
       <Slider
@@ -19,12 +24,10 @@ export default ({ activity, onPlay, onPause, onPrevious, onNext, onSeek }) => (
         max={activity.duration}
         value={activity.position}
         format={secondsToMinutes}
-          // onChangeStart={this.handleChangeStart}
         onChange={onSeek}
-          // onChangeComplete={this.handleChangeComplete}
-        />
-      <div style={{ float: 'left', marginTop: '1.15em', marginLeft: '1em'}}>
-        {secondsToMinutes(activity.duration)}
+      />
+      <div style={{ float: 'left', marginTop: '1.15em', marginLeft: '1.4em' }}>
+        {secondsToMinutes(activity.duration - activity.position)}
       </div>
     </div>
     <div style={{ clear: 'both', textAlign: 'center' }}>

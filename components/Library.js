@@ -1,8 +1,8 @@
 import React from 'react'
 import { Icon, List } from 'semantic-ui-react'
 
-export default ({ list, playing, onClickTrack, onDoubleClickTrack, onDeleteTrack }) => (
-  <List divided inverted selection>
+export default ({ inverted, list, playing, onClickTrack, onDoubleClickTrack, onDeleteTrack }) => (
+  <List divided inverted={inverted} selection>
     {Object.values(list).map(track => (
       <List.Item
         key={track.id}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { playerFromMIDIBuffer } from 'hackmidi'
-import { Divider, Grid, Segment } from 'semantic-ui-react'
+import { Divider, Grid, Icon, Segment } from 'semantic-ui-react'
 
 import Player from './Player'
 import Editor from './Editor'
@@ -19,9 +19,10 @@ export default class Main extends React.Component {
       activity: {
         track: null,
         playing: false,
-        duration: 0,
-        position: 0
-      }
+        duration: 0.01,
+        position: 0.00000001
+      },
+      inverted: true
     })
     this.player = null
   }
@@ -35,8 +36,8 @@ export default class Main extends React.Component {
       activity: {
         track: null,
         playing: false,
-        duration: 0,
-        position: 0
+        duration: 0.01,
+        position: 0.00000001
       }
     })
   }
@@ -46,7 +47,6 @@ export default class Main extends React.Component {
     activity.playing = playing
     this.setState({ activity })
     if (position === activity.duration) this.playOffset(1)
-    console.log(activity)
   }
   componentDidUpdate () {
     // console.log(this.state.activity)
@@ -141,8 +141,8 @@ export default class Main extends React.Component {
     }
     return (
       <div style={style}>
-        <Segment inverted>
-          <Grid columns='two' stackable>
+        <Segment inverted={this.state.inverted}>
+          <Grid columns='2' stackable>
             <Grid.Row>
               <Grid.Column>
                 <Player
@@ -155,15 +155,28 @@ export default class Main extends React.Component {
                 />
               </Grid.Column>
               <Grid.Column verticalAlign='bottom' textAlign='right'>
-                <Loader onTrackLoaded={track => this.addTrack(track)} />
+                <div style={{ marginBottom: '3.8em' }}>
+                  {this.state.inverted
+                  ? <span>
+                    Dark&nbsp;&nbsp;
+                    <Icon name='toggle on' onClick={() => this.setState({inverted: false})} />
+                  </span>
+                  : <span>
+                    Light&nbsp;&nbsp;
+                    <Icon name='toggle off' onClick={() => this.setState({inverted: true})} />
+                  </span>
+                  }
+                </div>
+                <Loader onTrackLoaded={track => this.addTrack(track)} inverted={this.state.inverted} />
               </Grid.Column>
             </Grid.Row>
           </Grid>
           <Divider />
-          <Grid columns='two' stackable>
+          <Grid columns='2' stackable>
             <Grid.Row>
               <Grid.Column>
                 <Library
+                  inverted={this.state.inverted}
                   list={this.state.library}
                   playing={this.state.activity.track}
                   onClickTrack={track => this.selectTrack(track)}
@@ -173,7 +186,11 @@ export default class Main extends React.Component {
               </Grid.Column>
               <Grid.Column>
                 {this.state.selected &&
-                  <Editor track={this.state.selected} onFieldChange={data => this.updateSelected(data)} />}
+                  <Editor
+                    inverted={this.state.inverted}
+                    track={this.state.selected}
+                    onFieldChange={data => this.updateSelected(data)}
+                  />}
               </Grid.Column>
             </Grid.Row>
           </Grid>

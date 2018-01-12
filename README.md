@@ -1,8 +1,8 @@
-# ElasticSuite
+# React MIDI Player
 
-## Candidate Evaluation Project.
+This project demonstrates a simple MIDI player.  MIDI files when added are saved to Local Storage.  Sample MIDI files can be found at [midiworld.com](http://www.midiworld.com/).
 
-### A Music Player
+---
 
 Requirements:
 
@@ -10,15 +10,22 @@ Requirements:
 - [x] Add music form, title, artist, album, file
 - [x] Queue list, displays title, artist, album
 - [x] Double-clicking in queue list plays selected song
-- [ ] When a song finishes playing, play next song in queue
-- [ ] Player status: current song title, artist, album, time elapsed, duration
-- [ ] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
+- [x] When a song finishes playing, play next song in queue
+- [x] Player status: current song title, artist, album, time elapsed, duration
+- [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
 
-Extra Credit:
+Extra:
 
 - [x] Actually playing audio. If not playing audio, just stub out file upload, playing, etc. Make each song just a two minute timer.
-- [ ] Simple UI theme in CSS.
+- [x] Simple UI theme in CSS.
 - [x] Persistence in local storage.
 
 ---
+
+### Install
+
+* Make sure yarn is available: `brew install yarn`
+* Install dependencies: `yarn`
+* Start the project: `yarn start`
+* Browse to the reported URL.
 
